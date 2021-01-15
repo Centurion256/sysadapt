@@ -19,6 +19,5 @@ if(VERBOSE)
 endif(VERBOSE)
 
 add_executable(sysadapt)
-add_dependencies(sysadapt call)
 target_sources(sysadapt PUBLIC "src/tracer.c")
 target_include_directories(sysadapt PUBLIC "include")

@@ -55,13 +55,14 @@ ssize_t syscall32(uint64_t sysno, uint8_t count, ...)
     case 6:
         asm volatile ("int $0x80"
         : "=a" (retval)
-        : "a" (sysno), "b" (va_arg(args, uint64_t)), "c" (va_arg(args, uint64_t)), "d" (va_arg(args, uint64_t)), "S" (va_arg(args, uint64_t)), "D" (va_arg(args, uint64_t)), "R" (va_arg(args, uint64_t))
+        : "a" (sysno), "b" (va_arg(args, uint64_t)), "c" (va_arg(args, uint64_t)), "d" (va_arg(args, uint64_t)), "S" (va_arg(args, uint64_t)), "D" (va_arg(args, uint64_t)), "r" (va_arg(args, uint64_t))
         : "memory");
         break;
     default:
         return -1;
         break;
     }
+    va_end(args);
     return retval;
 }
 
